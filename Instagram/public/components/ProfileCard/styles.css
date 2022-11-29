@@ -1,0 +1,35 @@
+section.type-b {
+     position: relative;
+    top: -640px; 
+    box-shadow: 5px 13px 25px black;
+    box-sizing: 5px 13px 58px -25px rgba(0,0,0);
+    border-color: black;
+    padding: 20px;
+    background-color: rgb(250, 250,250);
+    border-radius: 20px;
+    display: flex;
+    width: fit-content;
+    
+}
+
+p{
+    padding: 2px;
+}
+
+section.type-a {
+
+    position: relative;
+    top: 40px; right: -70%;
+    box-shadow: 5px 13px 25px black;
+    box-sizing: 5px 13px 58px -25px rgba(0,0,0);
+    border-color: black;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    width: fit-content;
+
+}
+
+
+
