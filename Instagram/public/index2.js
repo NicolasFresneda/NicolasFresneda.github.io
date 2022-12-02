@@ -1,54 +1,33 @@
-import './components/index.js'
-import data from './data.js';
-import { doc, getDoc } from "firebase/firestore";
-
-
-
-class Heading extends HTMLElement{
-    constructor(){
-        super();
-        this.attachShadow({mode: 'open'})
-        console.log(data.length);
-    }
-    connectedCallback() {
+// Your web app's Firebase configuration
+import {firebaseConfig} from "public\config.js";
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
   
+  // Set database variable
+  const database = firebase.database()
+  
+  function save() {
+    const Nombre = document.getElementById('Nombre').value
+    const Imagen = document.getElementById('Imagen').value
 
-const docRef = doc(db, "cities", "SF");
-const docSnap = await getDoc(docRef);
+  
+    database.ref('Posts/' + Nombre).set({
+      Nombre : Nombre,
+      Imagen : Imagen,
+ 
+    })
+  
+    alert('Saved')
+  }
+  
+  try {
+  const docRef = await addDoc(collection(db, "Posts"), {
+    Nombre : Nombre,
+    Imagen : Imagen
 
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-} else {
-  // doc.data() will be undefined in this case
-  console.log("No such document!");
+  });
+
+  console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
 }
-        this.render();
-}   
-
-    render (){
-        const compts = data.map(({name, email, username}) => `<profile-card name=${name} email=${email} username=${username}></profile-card>`) 
-        console.log(compts);
-        this.shadowRoot.innerHTML = compts.join("")
-    }
-} 
-
-customElements.define('Heading-insta', Heading)
-
-class head extends HTMLElement{
-    constructor(){
-        super();
-        this.attachShadow({mode: 'open'})
-        console.log(data.length);
-    }
-    connectedCallback() {
-        this.render();
-}   
-
-    render (){
-        const compts = `<head-insta></head-insta>`
-        console.log(compts);
-        this.shadowRoot.innerHTML = `<head-insta></head-insta>`
-    }
-} 
-
-customElements.define('head-i', head)

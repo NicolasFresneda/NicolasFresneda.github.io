@@ -3,7 +3,7 @@
 
 class ProfileCard extends HTMLElement {
     static get observedAttributes(){
-        return['name', "email","username"]
+        return['Nombre', "Imagen"]
     }
 
     constructor(){
@@ -25,15 +25,17 @@ class ProfileCard extends HTMLElement {
         <section class="type-b">
 
             <p>
-            <img src="https://cdn-icons-png.flaticon.com/512/16/16363.png" width="25" height="25">
-            ${this.username}
+           <img src="https://cdn-icons-png.flaticon.com/512/16/16363.png" width="25" height="25">
+            ${this.Nombre}
             <br>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Cuesta_del_obispo_01.jpg/640px-Cuesta_del_obispo_01.jpg" width="550" height="400">
+            <img src=" ${this.Imagen}" width="550" height="400">
             <br> <contador-likes></contador-likes> 
             <br>
             Comments
             <br>
-            ${this.email}
+
+            
+
             
             </p>
             

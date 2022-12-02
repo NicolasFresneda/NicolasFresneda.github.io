@@ -1,18 +1,25 @@
 import './components/index.js'
 import data from './data.js';
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+import { getDatabase, ref, onValue} from "firebase/database";
+
+const db = getDatabase();
+const starCountRef = ref(db, 'posts/' + postId + '/starCount');
+onValue(starCountRef, (snapshot) => {
+  const post = snapshot.val();
+  updateStarCount(postElement, post);
+});
 
 
 
-function myFunction() {
-    pagina == 1;
-    console.log(pagina);
-  }
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 
-
-
-
-
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
+import {firebaseConfig} from "public\config.js";
 
 
 
@@ -34,7 +41,7 @@ class Appcontainer extends HTMLElement{
 
     render (){
         
-        const compt = data.map(({name, email, username}) => `<profile-card name=${name} email=${email} username=${username}></profile-card>`) 
+        const compts = post.map(({Nombre, Imagen}) => `<profile-card name=${Nombre} email=${Imagen}></profile-card>`) 
         console.log(compt);
         this.shadowRoot.innerHTML = compt.join("")
 
